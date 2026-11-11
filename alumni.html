@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alumni | Waterloo Private Capital</title>
+<meta name="description" content="Alumni of Waterloo Private Capital, a student club at the University of Waterloo.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0A1A2F}a:hover{color:#3A5675}
+a:focus-visible{outline:2px solid #3A5675;outline-offset:4px}
+.alumni-cell{position:relative;transition:background 0.3s ease}
+.alumni-cell::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#0A1A2F;transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)}
+.alumni-cell:hover{background:#F5F6F8}
+.alumni-cell:hover::after{transform:scaleX(1)}
+.alumni-logo{filter:grayscale(100%);opacity:0.7;transition:filter 0.3s ease,opacity 0.3s ease,transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)}
+.alumni-cell:hover .alumni-logo{filter:none;opacity:1;transform:scale(1.06)}
+@media (prefers-reduced-motion: reduce){.alumni-cell::after,.alumni-logo{transition:none}.alumni-cell:hover .alumni-logo{transform:none}}
+</style>
+<link rel="stylesheet" href="animations.css">
+<script src="animations.js"></script>
+</head>
+<body>
+<div style="font-family: 'EB Garamond', Garamond, Georgia, serif; color: #0A1A2F; background: #FFFFFF; width: 100%">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #DADFE5">
+<nav aria-label="Main" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; min-height: 96px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="index.html" aria-label="Waterloo Private Capital home" style="text-decoration: none; display: inline-flex; padding: 16px 0">
+<span style="display: flex; flex-direction: column; align-items: stretch; gap: 4px">
+<span style="font-weight: 700; font-size: 36px; line-height: 0.9; color: #0A1A2F; letter-spacing: 1px">WATERLOO</span>
+<span style="display: flex; align-items: center; gap: 8px">
+<span style="flex: 1 1 auto; height: 1px; background: #0A1A2F"></span>
+<span style="font-weight: 700; font-size: 11px; line-height: 1; color: #0A1A2F; letter-spacing: 2.5px">PRIVATE CAPITAL</span>
+<span style="flex: 1 1 auto; height: 1px; background: #0A1A2F"></span>
+</span>
+</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0">
+<a href="index.html" style="color: #0A1A2F; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 16px">Home</a>
+<a href="team.html" style="color: #0A1A2F; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 16px">Our Team</a>
+<a href="alumni.html" aria-current="page" style="color: #0A1A2F; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 16px 12px; border-bottom: 1px solid #0A1A2F">Alumni</a>
+<a href="education.html" style="color: #0A1A2F; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 16px">Education</a>
+<a href="hiring.html" style="color: #0A1A2F; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 16px">Hiring</a>
+<a href="contact.html" style="color: #0A1A2F; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; padding: 16px">Contact</a>
+</div>
+</nav>
+</header>
+
+<section aria-labelledby="page-h" style="position: relative; overflow: hidden; background: #0A1A2F; color: #FFFFFF; min-height: 340px; display: flex; align-items: center; justify-content: center; text-align: center">
+<img src="images/hero-skyline.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%">
+<span aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10, 26, 47, 0.72)"></span>
+<div style="position: relative; padding: 0 40px; display: flex; flex-direction: column; align-items: center; gap: 32px">
+<span style="display: block; width: 64px; height: 1px; background: #FFFFFF"></span>
+<h1 id="page-h" style="margin: 0; font-weight: 400; font-size: clamp(44px, 5.6vw, 80px); line-height: 1.1; letter-spacing: 4px; text-transform: uppercase">Alumni</h1>
+</div>
+</section>
+
+<section style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 112px 40px 160px; display: flex; flex-direction: column; gap: 72px">
+
+<div style="display: flex; flex-direction: column; gap: 32px; padding-top: 24px">
+<h2 style="margin: 0; font-weight: 400; font-size: 36px; line-height: 1.2; text-align: center">Investment Banking</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/goldman-sachs.png" alt="Goldman Sachs" style="display: block; max-width: 80%; max-height: 48px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/morgan-stanley.png" alt="Morgan Stanley" style="display: block; max-width: 80%; max-height: 34px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/evercore.png" alt="Evercore" style="display: block; max-width: 80%; max-height: 36px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/lazard.png" alt="Lazard" style="display: block; max-width: 80%; max-height: 39px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/moelis.png" alt="Moelis" style="display: block; max-width: 80%; max-height: 40px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/pjt-partners.png" alt="PJT Partners" style="display: block; max-width: 80%; max-height: 56px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/barclays.png" alt="Barclays" style="display: block; max-width: 80%; max-height: 38px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/bofa-securities.png" alt="BofA Securities" style="display: block; max-width: 80%; max-height: 30px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/mizuho-greenhill.png" alt="Mizuho Greenhill" style="display: block; max-width: 80%; max-height: 35px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/macquarie.png" alt="Macquarie" style="display: block; max-width: 80%; max-height: 38px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/rbc-capital-markets.png" alt="RBC Capital Markets" style="display: block; max-width: 80%; max-height: 60px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/cibc-capital-markets.png" alt="CIBC Capital Markets" style="display: block; max-width: 80%; max-height: 36px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/td-securities.png" alt="TD Securities" style="display: block; max-width: 80%; max-height: 41px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/scotiabank.png" alt="Scotiabank" style="display: block; max-width: 80%; max-height: 34px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/ardea-partners.png" alt="Ardea Partners" style="display: block; max-width: 80%; max-height: 34px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/origin-merchant-partners.png" alt="Origin Merchant Partners" style="display: block; max-width: 80%; max-height: 40px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/bloom-burton.png" alt="Bloom Burton" style="display: block; max-width: 80%; max-height: 34px; width: auto; height: auto"></li>
+
+</ul>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 32px; padding-top: 24px">
+<h2 style="margin: 0; font-weight: 400; font-size: 36px; line-height: 1.2; text-align: center">Private Equity &amp; Investing</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/blackstone.png" alt="Blackstone" style="display: block; max-width: 80%; max-height: 56px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/eqt.png" alt="EQT" style="display: block; max-width: 80%; max-height: 49px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/cpp-investments.png" alt="CPP Investments" style="display: block; max-width: 80%; max-height: 37px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/ontario-teachers.png" alt="Ontario Teachers&#x27;" style="display: block; max-width: 80%; max-height: 52px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/hoopp.png" alt="HOOPP" style="display: block; max-width: 80%; max-height: 45px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/omers.png" alt="OMERS" style="display: block; max-width: 80%; max-height: 43px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/aimco.png" alt="AIMCO" style="display: block; max-width: 80%; max-height: 44px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/bci.png" alt="BCI" style="display: block; max-width: 80%; max-height: 46px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/psp-investments.png" alt="PSP Investments" style="display: block; max-width: 80%; max-height: 42px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/brookfield.png" alt="Brookfield" style="display: block; max-width: 80%; max-height: 35px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/onex.png" alt="Onex" style="display: block; max-width: 80%; max-height: 38px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/torquest.png" alt="TorQuest Partners" style="display: block; max-width: 80%; max-height: 38px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/altas-partners.png" alt="Altas Partners" style="display: block; max-width: 80%; max-height: 37px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/millennium.png" alt="Millennium" style="display: block; max-width: 80%; max-height: 34px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/point72.png" alt="Point72" style="display: block; max-width: 80%; max-height: 53px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/weiss-asset-management.png" alt="Weiss Asset Management" style="display: block; max-width: 80%; max-height: 39px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/novacap.png" alt="Novacap" style="display: block; max-width: 80%; max-height: 44px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/dawson-partners.png" alt="Dawson Partners" style="display: block; max-width: 80%; max-height: 30px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/kinterra-capital.png" alt="Kinterra Capital" style="display: block; max-width: 80%; max-height: 40px; width: auto; height: auto"></li>
+
+</ul>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 32px; padding-top: 24px">
+<h2 style="margin: 0; font-weight: 400; font-size: 36px; line-height: 1.2; text-align: center">Corporate &amp; Technology</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/microsoft.png" alt="Microsoft" style="display: block; max-width: 80%; max-height: 41px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/bcg.png" alt="Boston Consulting Group" style="display: block; max-width: 80%; max-height: 44px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/george-weston.png" alt="George Weston" style="display: block; max-width: 80%; max-height: 49px; width: auto; height: auto"></li>
+
+<li class="alumni-cell" style="height: 128px; padding: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center"><img class="alumni-logo" src="images/alumni/johnson-and-johnson.png" alt="Johnson &amp; Johnson" style="display: block; max-width: 88%; max-height: 26px; width: auto; height: auto"></li>
+
+</ul>
+</div>
+
+</div>
+</section>
+
+<footer style="background: #0A1A2F; color: #B7C3D1">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 40px 40px; display: flex; flex-direction: column; gap: 64px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 48px">
+<div style="align-self: flex-start; display: inline-flex">
+<span style="display: flex; flex-direction: column; align-items: stretch; gap: 8px">
+<span style="font-weight: 700; font-size: 48px; line-height: 0.9; color: #FFFFFF; letter-spacing: 1px">WATERLOO</span>
+<span style="display: flex; align-items: center; gap: 8px">
+<span style="flex: 1 1 auto; height: 1px; background: #FFFFFF"></span>
+<span style="font-weight: 700; font-size: 14px; line-height: 1; color: #FFFFFF; letter-spacing: 3px">PRIVATE CAPITAL</span>
+<span style="flex: 1 1 auto; height: 1px; background: #FFFFFF"></span>
+</span>
+</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 72px">
+<div style="display: flex; flex-direction: column; gap: 0">
+<p style="margin: 0 0 8px; font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; color: #FFFFFF">WPC</p>
+<a href="index.html" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">Home</a>
+<a href="team.html" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">Our Team</a>
+<a href="alumni.html" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">Alumni</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 0">
+<p style="margin: 0 0 8px; font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; color: #FFFFFF">Get Involved</p>
+<a href="education.html" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">Education</a>
+<a href="hiring.html" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">Hiring</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 0">
+<p style="margin: 0 0 8px; font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase; color: #FFFFFF">Connect</p>
+<a href="https://www.linkedin.com/company/waterloo-private-capital/" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">LinkedIn</a>
+<a href="contact.html" style="color: #B7C3D1; text-decoration: none; font-size: 18px; padding: 8px 0">Contact</a>
+</div>
+</div>
+</div>
+<div style="border-top: 1px solid #24384F; padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 16px">
+<span>© 2026 Waterloo Private Capital. All rights reserved.</span>
+<span>University of Waterloo, Waterloo, Ontario</span>
+</div>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
