@@ -66,7 +66,75 @@
     }, { rootMargin: '0px 0px -4% 0px', threshold: 0 });
     targets.forEach(function (el) { observer.observe(el); });
 
-    // Parallax on hero background images.
+    markHeroLines();
+    enhanceHeader();
+    enhanceLinks();
+    wrapPhotos();
+    parallax();
+  }
+
+  // The short white rule above each banner title draws outward instead of fading up.
+  function markHeroLines() {
+    document.querySelectorAll('section > div > span:first-child[data-reveal]').forEach(function (line) {
+      if (line.offsetHeight > 2) return;
+      line.setAttribute('data-line', '');
+      line.style.transformOrigin = getComputedStyle(line.parentElement).alignItems === 'center' ? 'center' : 'left';
+    });
+  }
+
+  // Header stays pinned and tightens up once the page is scrolled.
+  function enhanceHeader() {
+    var header = document.querySelector('header');
+    if (!header) return;
+    header.classList.add('site-header');
+    var scrolled = false;
+    function check() {
+      var now = window.scrollY > 24;
+      if (now !== scrolled) { scrolled = now; header.classList.toggle('is-scrolled', now); }
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  }
+
+  // Menu links get a sliding underline; text links ("Meet the Team") get an arrow.
+  function enhanceLinks() {
+    document.querySelectorAll('header nav > div > a').forEach(function (a) { a.classList.add('nav-link'); });
+    document.querySelectorAll('section a').forEach(function (a) {
+      var st = a.getAttribute('style') || '';
+      if (st.indexOf('border-bottom: 1px solid') !== -1 && st.indexOf('text-transform: uppercase') !== -1) {
+        a.classList.add('cta-link');
+      }
+    });
+    // Fade out before moving to another page on the site.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (a.target && a.target !== '_self') return;
+      var url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || url.pathname === location.pathname || !/\.html?$|\/$/.test(url.pathname)) return;
+      e.preventDefault();
+      document.documentElement.classList.add('is-leaving');
+      setTimeout(function () { location.href = url.href; }, 180);
+    });
+    window.addEventListener('pageshow', function () {
+      document.documentElement.classList.remove('is-leaving');
+    });
+  }
+
+  // Team and service photos sit in a clipping frame so they can zoom slightly on hover.
+  function wrapPhotos() {
+    document.querySelectorAll('img[src^="images/team/"], #services article > img').forEach(function (img) {
+      var frame = document.createElement('div');
+      frame.className = 'photo-frame';
+      frame.style.marginBottom = img.style.marginBottom;
+      img.style.marginBottom = '0';
+      img.parentNode.insertBefore(frame, img);
+      frame.appendChild(img);
+    });
+  }
+
+  // Parallax on hero background images.
+  function parallax() {
     var heroes = [];
     document.querySelectorAll('section > img').forEach(function (img) {
       if (getComputedStyle(img).position !== 'absolute') return;
