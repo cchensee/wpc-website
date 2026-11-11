@@ -25,7 +25,8 @@
       var child = node.children[i];
       var cs = getComputedStyle(child);
       if (cs.position === 'absolute' || cs.display === 'none') continue;
-      if (group || BLOCKS.indexOf(child.tagName) !== -1 || child.children.length === 0) {
+      if (group || BLOCKS.indexOf(child.tagName) !== -1 || child.children.length === 0 ||
+          child.classList.contains('photo-frame')) {
         out.push(child);
       } else {
         collect(child, out);
@@ -34,6 +35,8 @@
   }
 
   function init() {
+    // Frame photos first so a photo reveals as one piece and its hover zoom isn't overridden.
+    wrapPhotos();
     var targets = [];
     document.querySelectorAll('section').forEach(function (section) {
       collect(section, targets);
@@ -69,7 +72,6 @@
     markHeroLines();
     enhanceHeader();
     enhanceLinks();
-    wrapPhotos();
     parallax();
   }
 
