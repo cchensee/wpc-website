@@ -164,3 +164,43 @@
     init();
   }
 })();
+
+/* Phone menu: on small screens the nav links fold behind a menu button.
+   Kept separate from the animations so it works with reduced motion too. */
+(function () {
+  function init() {
+    var header = document.querySelector('header');
+    var nav = header && header.querySelector('nav');
+    var links = nav && nav.querySelector('nav > div');
+    if (!links) return;
+    links.id = 'site-menu';
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'menu-toggle';
+    button.setAttribute('aria-controls', 'site-menu');
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-label', 'Open menu');
+    button.innerHTML = '<span></span><span></span>';
+    nav.insertBefore(button, links);
+    header.classList.add('has-menu');
+    function setOpen(open) {
+      header.classList.toggle('menu-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    button.addEventListener('click', function () {
+      setOpen(!header.classList.contains('menu-open'));
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('menu-open')) { setOpen(false); button.focus(); }
+    });
+    window.matchMedia('(min-width: 721px)').addEventListener('change', function (mq) {
+      if (mq.matches) setOpen(false);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

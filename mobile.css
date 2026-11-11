@@ -1,0 +1,63 @@
+/* Phone and small-tablet layout. Pages are styled inline, so these rules
+   use !important and match on the inline style values they override. */
+
+/* Menu button (only shown on small screens, added by animations.js). */
+.menu-toggle{display:none}
+
+body > div{overflow-x:clip}
+
+@media (max-width: 720px){
+  /* Header: logo + menu button, links fold into a panel. */
+  header nav{min-height:72px !important;padding:0 24px !important;row-gap:0 !important}
+  header nav > a:first-child{padding:12px 0 !important}
+  header nav > a:first-child > span > span:first-child{font-size:30px !important}
+  .site-header.is-scrolled nav{min-height:64px !important}
+
+  .has-menu .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:7px;width:44px;height:44px;margin-right:-10px;padding:10px;border:0;background:none !important;cursor:pointer}
+  .menu-toggle span{display:block;height:1px;width:24px;background:#0A1A2F;transition:transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)}
+  .menu-open .menu-toggle span:first-child{transform:translateY(4px) rotate(45deg)}
+  .menu-open .menu-toggle span:last-child{transform:translateY(-4px) rotate(-45deg)}
+
+  .has-menu #site-menu{display:none !important}
+  .has-menu.menu-open #site-menu{display:flex !important;flex-direction:column;align-items:stretch !important;width:100%;padding:8px 0 16px;border-top:1px solid #DADFE5;animation:menu-in 0.3s ease-out}
+  .has-menu.menu-open #site-menu a{padding:14px 0 !important;border-bottom:0 !important;font-size:15px !important}
+  .has-menu.menu-open #site-menu a[aria-current]{color:#3A5675 !important}
+  .has-menu .nav-link::after{display:none}
+  @keyframes menu-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+  /* Side gutters and vertical rhythm. */
+  section > div[style*="max-width: 1280px"], footer > div{padding-left:24px !important;padding-right:24px !important}
+  section > div[style*="padding: 144px"], section > div[style*="padding: 160px"], section > div[style*="padding: 112px"]{padding-top:80px !important;padding-bottom:88px !important}
+  section > div[style*="padding: 0 40px 144px"]{padding-bottom:88px !important}
+  footer > div{padding-top:64px !important}
+  [style*="gap: 80px"]{gap:32px !important}
+  [style*="gap: 72px"]{gap:48px !important}
+  [style*="gap: 128px"]{gap:80px !important}
+
+  /* Banners. */
+  #top{min-height:560px !important}
+  #top > div{padding:0 24px 64px !important}
+  #top h1{font-size:40px !important}
+  section[style*="min-height: 340px"] > div{padding:0 24px !important}
+  section[style*="min-height: 340px"] h1{font-size:34px !important;letter-spacing:3px !important}
+  section[style*="min-height: 340px"]{min-height:260px !important}
+
+  /* Section headings a touch smaller. */
+  h2[style*="clamp(36px"]{font-size:32px !important}
+
+  /* Logo grids: two across. */
+  ul[style*="minmax(200px"]{grid-template-columns:repeat(2, 1fr) !important}
+  ul[style*="minmax(200px"] > li{height:96px !important;padding:16px !important}
+  div[style*="minmax(max(200px, 30%)"]{grid-template-columns:repeat(2, 1fr) !important}
+  div[style*="minmax(max(200px, 30%)"] > div{height:112px !important;padding:20px !important}
+
+  /* Team: two people per row. */
+  div[style*="gap: 56px 32px"]{gap:40px 16px !important}
+  div[style*="width: 272px"]{width:calc(50% - 8px) !important}
+  div[style*="width: 272px"] span[style*="font-size: 24px"]{font-size:18px !important}
+  div[style*="width: 272px"] span[style*="font-size: 14px"]{font-size:11px !important;letter-spacing:1.5px !important}
+  div[style*="width: 272px"] a[aria-label$="on LinkedIn"]{width:36px !important;height:36px !important;margin:-6px -8px 0 0 !important}
+
+  /* Body copy. */
+  p[style*="font-size: 20px"]{font-size:18px !important}
+}
