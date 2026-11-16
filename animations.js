@@ -72,6 +72,7 @@
     markHeroLines();
     enhanceHeader();
     enhanceLinks();
+    countUp();
     parallax();
   }
 
@@ -133,6 +134,26 @@
       img.parentNode.insertBefore(frame, img);
       frame.appendChild(img);
     });
+  }
+
+  // Stat numbers count up once when they come into view.
+  function countUp() {
+    var nums = document.querySelectorAll('[data-count]');
+    if (!nums.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        var el = entry.target, end = +el.getAttribute('data-count'), suffix = el.getAttribute('data-suffix') || '';
+        var start = performance.now(), dur = 1400;
+        (function tick(now) {
+          var t = Math.min(1, (now - start) / dur), eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(end * eased) + (t === 1 ? suffix : '');
+          if (t < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (el) { el.textContent = '0'; io.observe(el); });
   }
 
   // Parallax on hero background images.

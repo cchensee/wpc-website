@@ -6,6 +6,16 @@
 
 body > div{overflow-x:clip}
 
+/* Shared layout: every block lines up with the same 1200px content edge. */
+.split{display:grid;grid-template-columns:1fr 1fr}
+.split > div{box-sizing:border-box;padding-top:clamp(72px, 8vw, 128px);padding-bottom:clamp(72px, 8vw, 128px)}
+.split-text{padding-left:max(40px, calc(100% - 600px));padding-right:clamp(40px, 5vw, 80px);display:flex;flex-direction:column;justify-content:center;gap:28px}
+.split-stats{padding-right:max(40px, calc(100% - 600px));padding-left:clamp(40px, 5vw, 80px);background:#0A1A2F;color:#FFFFFF;display:flex;align-items:center}
+@media (max-width: 900px){
+  .split{grid-template-columns:1fr}
+  .split-text,.split-stats{padding-left:40px;padding-right:40px}
+}
+
 @media (max-width: 720px){
   /* Header: logo + menu button, links fold into a panel. */
   header nav{min-height:72px !important;padding:0 24px !important;row-gap:0 !important}
@@ -41,6 +51,12 @@ body > div{overflow-x:clip}
   section[style*="min-height: 340px"] > div{padding:0 24px !important}
   section[style*="min-height: 340px"] h1{font-size:34px !important;letter-spacing:3px !important}
   section[style*="min-height: 340px"]{min-height:260px !important}
+
+  /* Who we are + stats. */
+  #firm > div > div{padding:72px 24px !important}
+  .stats-panel > div{gap:24px 12px !important}
+  .stats-panel span[data-count]{font-size:44px !important}
+  .stats-panel span + span{font-size:11px !important;letter-spacing:1.5px !important}
 
   /* Section headings a touch smaller. */
   h2[style*="clamp(36px"]{font-size:32px !important}

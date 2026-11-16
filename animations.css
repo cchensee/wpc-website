@@ -51,6 +51,13 @@ a[aria-label$="on LinkedIn"] rect{transition:fill 0.3s ease}
 a[aria-label$="on LinkedIn"]:hover svg{transform:translateY(-2px)}
 a[aria-label$="on LinkedIn"]:hover rect{fill:#3A5675}
 
+/* Outlined button. */
+.btn-outline{transition:background 0.3s ease,color 0.3s ease}
+.btn-outline:hover{background:#0A1A2F;color:#FFFFFF}
+
+/* Fine diagonal texture on the navy stats panel. */
+.stats-panel{background-image:repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 14px) !important}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
