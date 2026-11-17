@@ -58,6 +58,17 @@ a[aria-label$="on LinkedIn"]:hover rect{fill:#3A5675}
 /* Fine diagonal texture on the navy stats panel. */
 .stats-panel{background-image:repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 14px) !important}
 
+/* Home page: header sits on the photo until the page scrolls. */
+.header-over{margin-bottom:-89px;transition:background-color 0.35s ease,border-color 0.35s ease,box-shadow 0.3s ease}
+.site-header.header-over:not(.is-scrolled):not(.menu-open){background:transparent !important;border-bottom-color:transparent !important}
+/* White logo and menu while over the photo. */
+.header-over .wpc-logo,.header-over nav > div > a,.header-over .menu-toggle span{transition:color 0.35s ease,background-color 0.35s ease,border-color 0.35s ease}
+.site-header.header-over:not(.is-scrolled):not(.menu-open) .wpc-logo,
+.site-header.header-over:not(.is-scrolled):not(.menu-open) nav > div > a{color:#FFFFFF !important;border-bottom-color:#FFFFFF !important}
+.site-header.header-over:not(.is-scrolled):not(.menu-open) .nav-link::after,
+.site-header.header-over:not(.is-scrolled):not(.menu-open) .menu-toggle span{background:#FFFFFF}
+#top h1,#top p{text-shadow:0 1px 14px rgba(10, 26, 47, 0.35)}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .js [data-reveal]{opacity:1;transform:none;transition:none}

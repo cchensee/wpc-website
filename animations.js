@@ -188,6 +188,43 @@
   }
 })();
 
+/* Team grids: spread people evenly across rows so nobody ends up alone on the
+   last row (e.g. 5 people show as 3 + 2, not 4 + 1). */
+(function () {
+  function balance() {
+    document.querySelectorAll('div[style*="gap: 56px 32px"]').forEach(function (grid) {
+      grid.style.maxWidth = '';
+      var cards = grid.children, n = cards.length;
+      for (var i = 0; i < n; i++) {
+        if (!cards[i].dataset.width) cards[i].dataset.width = cards[i].style.width;
+        cards[i].style.setProperty('width', cards[i].dataset.width);
+      }
+      grid.classList.toggle('three-up', n % 2 === 1 && n > 1);
+      if (!n || window.matchMedia('(max-width: 720px)').matches) return;
+      var w = cards[0].offsetWidth, gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+      var fit = Math.max(1, Math.floor((grid.clientWidth + gap) / (w + gap) + 0.01));
+      var rows = Math.ceil(n / fit), perRow = Math.ceil(n / rows);
+      if (perRow < fit) {
+        // Lock card width first so narrowing the row doesn't shrink the cards.
+        for (var j = 0; j < n; j++) cards[j].style.setProperty('width', w + 'px', 'important');
+        grid.style.maxWidth = (perRow * w + (perRow - 1) * gap) + 'px';
+        grid.style.width = '100%';
+        grid.style.marginLeft = grid.style.marginRight = 'auto';
+      }
+    });
+  }
+  var t;
+  function init() {
+    balance();
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(balance, 100); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 /* Phone menu: on small screens the nav links fold behind a menu button.
    Kept separate from the animations so it works with reduced motion too. */
 (function () {
