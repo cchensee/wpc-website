@@ -87,9 +87,16 @@ body > div{overflow-x:clip}
   /* Odd-sized groups go three across so nobody sits alone on the last row. */
   div.three-up[style]{gap:32px 12px !important}
   .three-up > div[style*="width: 272px"]{width:calc((100% - 24px) / 3) !important}
-  .three-up > div[style*="width: 272px"] span[style*="font-size: 24px"]{font-size:15px !important}
+  .three-up > div[style*="width: 272px"] span[style*="font-size: 24px"]{font-size:14px !important;line-height:1.25 !important}
+  .three-up > div[style*="width: 272px"] > div:last-child{gap:4px !important}
   .three-up > div[style*="width: 272px"] a[aria-label$="on LinkedIn"]{width:28px !important;height:28px !important;margin:-4px -6px 0 0 !important}
   .three-up > div[style*="width: 272px"] svg{width:16px;height:16px}
+
+  /* Home banner photo: keep the CN Tower in frame on narrow screens. */
+  #top > img{object-position:66% 40% !important}
+
+  /* Hiring: social buttons stack at equal full width. */
+  .social-btn{flex:1 1 100%;justify-content:center}
 
   /* Body copy. */
   p[style*="font-size: 20px"]{font-size:18px !important}

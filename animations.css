@@ -31,7 +31,7 @@ html{scroll-padding-top:88px}
 /* Menu links: underline slides in from the left. */
 .nav-link{position:relative}
 .nav-link::after{content:"";position:absolute;left:16px;right:16px;bottom:11px;height:1px;background:#0A1A2F;transform:scaleX(0);transform-origin:left;transition:transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)}
-.nav-link:not([aria-current]):hover::after{transform:scaleX(1)}
+.nav-link:hover::after,.nav-link[aria-current]::after{transform:scaleX(1)}
 
 /* Text links get a small arrow on hover. */
 .cta-link{position:relative}
