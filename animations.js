@@ -188,6 +188,25 @@
   }
 })();
 
+/* Always open pages at the top instead of restoring the old scroll position
+   (unless the link points at a #section). */
+(function () {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  function toTop() {
+    if (location.hash) return;
+    var html = document.documentElement, prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = prev;
+  }
+  window.addEventListener('pageshow', toTop);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', toTop);
+  } else {
+    toTop();
+  }
+})();
+
 /* Team grids: spread people evenly across rows so nobody ends up alone on the
    last row (e.g. 5 people show as 3 + 2, not 4 + 1). */
 (function () {
