@@ -24,7 +24,7 @@
     for (var i = 0; i < node.children.length; i++) {
       var child = node.children[i];
       var cs = getComputedStyle(child);
-      if (cs.position === 'absolute' || cs.display === 'none') continue;
+      if (cs.position === 'absolute' || cs.display === 'none' || child.hasAttribute('data-no-reveal')) continue;
       if (group || BLOCKS.indexOf(child.tagName) !== -1 || child.children.length === 0 ||
           child.classList.contains('photo-frame')) {
         out.push(child);
@@ -37,6 +37,7 @@
   function init() {
     // Frame photos first so a photo reveals as one piece and its hover zoom isn't overridden.
     wrapPhotos();
+    heroTitle();
     var targets = [];
     document.querySelectorAll('section').forEach(function (section) {
       collect(section, targets);
@@ -154,6 +155,19 @@
       });
     }, { threshold: 0.6 });
     nums.forEach(function (el) { el.textContent = '0'; io.observe(el); });
+  }
+
+  // Home headline: each line slides up from behind a mask when the page opens.
+  function heroTitle() {
+    var h = document.querySelector('#top h1');
+    if (!h) return;
+    h.setAttribute('data-no-reveal', '');
+    h.innerHTML = h.innerHTML.split(/<br\s*\/?>/i).map(function (line, i) {
+      return '<span class="line-mask"><span class="line" style="animation-delay:' + (0.2 + i * 0.15) + 's">' + line.trim() + '</span></span>';
+    }).join('');
+    // The sentence underneath waits until the headline has finished.
+    var sub = h.parentNode.querySelector('h1 ~ p');
+    if (sub) { sub.setAttribute('data-no-reveal', ''); sub.classList.add('hero-sub'); }
   }
 
   // Parallax on hero background images.

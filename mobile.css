@@ -54,7 +54,7 @@ body > div{overflow-x:clip}
   [style*="gap: 128px"]{gap:80px !important}
 
   /* Banners. */
-  #top{min-height:max(560px, 100svh) !important}
+  #top{min-height:max(560px, 100vh) !important;min-height:max(560px, 100lvh) !important}
   .header-over{margin-bottom:-73px}
   #top > div{padding:0 24px 64px !important}
   #top h1{font-size:44px !important}

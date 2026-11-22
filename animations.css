@@ -69,6 +69,16 @@ a[aria-label$="on LinkedIn"]:hover rect{fill:#3A5675}
 .site-header.header-over:not(.is-scrolled):not(.menu-open) .menu-toggle span{background:#FFFFFF}
 #top h1,#top p{text-shadow:0 1px 14px rgba(10, 26, 47, 0.35)}
 
+/* Home headline line-by-line entrance. */
+#top h1 .line-mask{display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em}
+#top h1 .line{display:block;animation:line-wipe 1.4s cubic-bezier(0.65, 0, 0.35, 1) both}
+#top .hero-sub{animation:sub-in 1.6s ease 1.6s both}
+@keyframes sub-in{from{opacity:0}to{opacity:1}}
+@keyframes line-wipe{
+  from{clip-path:inset(-0.2em 100% -0.2em 0);transform:translateX(-14px)}
+  to{clip-path:inset(-0.2em 0 -0.2em 0);transform:none}
+}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
