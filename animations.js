@@ -163,7 +163,7 @@
     if (!h) return;
     h.setAttribute('data-no-reveal', '');
     h.innerHTML = h.innerHTML.split(/<br\s*\/?>/i).map(function (line, i) {
-      return '<span class="line-mask"><span class="line" style="animation-delay:' + (0.2 + i * 0.15) + 's">' + line.trim() + '</span></span>';
+      return '<span class="line-mask"><span class="line" style="animation-delay:' + (0.15 + i * 0.13) + 's">' + line.trim() + '</span></span>';
     }).join('');
     // The sentence underneath waits until the headline has finished.
     var sub = h.parentNode.querySelector('h1 ~ p');
