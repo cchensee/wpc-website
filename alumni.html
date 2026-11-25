@@ -20,6 +20,34 @@ a:focus-visible{outline:2px solid #3A5675;outline-offset:4px}
 .alumni-logo{filter:grayscale(100%);opacity:0.7;transition:filter 0.3s ease,opacity 0.3s ease,transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)}
 .alumni-cell:hover .alumni-logo{filter:none;opacity:1;transform:scale(1.06)}
 @media (prefers-reduced-motion: reduce){.alumni-cell::after,.alumni-logo{transition:none}.alumni-cell:hover .alumni-logo{transform:none}}
+.route-map{position:relative;width:100%}
+.route-map canvas,.route-map svg{display:block;width:100%}
+.route-map svg{position:absolute;inset:0;overflow:visible}
+.route-arc{fill:none;stroke:#FFFFFF;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;opacity:0.5;transition:stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1),opacity 0.3s ease}
+.route-arc.is-drawn{stroke-dashoffset:0}
+.route-dot{fill:#FFFFFF;transition:opacity 0.3s ease}
+.route-home{fill:#0A1A2F;stroke:#FFFFFF;stroke-width:1.4}
+.route-label{font-family:'EB Garamond', Georgia, serif;font-size:11px;letter-spacing:2px;fill:#0A1A2F}
+.route-pulse{fill:#FFFFFF;opacity:0.8;transition:opacity 0.3s ease}
+.route-hit{fill:transparent;cursor:pointer}
+.route-city-pt{outline:none}
+.route-city-pt .route-dot{transition:r 0.25s ease,opacity 0.3s ease}
+.route-city-pt:hover .route-dot,.route-city-pt.is-active .route-dot{r:5}
+.route-tag{font-family:'EB Garamond', Georgia, serif;font-size:12px;letter-spacing:2.5px;fill:#FFFFFF;opacity:0;transition:opacity 0.25s ease;pointer-events:none}
+.route-city-pt:hover .route-tag,.route-city-pt.is-active .route-tag,.route-city-pt:focus-visible .route-tag{opacity:1}
+.has-active .route-arc{opacity:0.12}
+.has-active .route-arc.is-active{opacity:1;stroke-width:1.5}
+.has-active .route-pulse{opacity:0}
+.has-active .route-pulse.is-active{opacity:1}
+.has-active .route-city-pt:not(.is-active) .route-dot{opacity:0.3}
+.route-legend{display:flex;flex-wrap:wrap;gap:10px 32px;padding-top:24px;border-top:1px solid #DADFE5}
+.route-city{font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#4D5562;cursor:default;transition:color 0.2s ease}
+.route-city b{font-weight:400;color:#8A93A0;margin-left:6px}
+.route-city.is-active,.route-city:hover{color:#0A1A2F}
+@media (max-width: 720px){
+  .route-legend{gap:8px 20px}
+  .route-city{font-size:12px;letter-spacing:1.5px}
+}
 </style>
 <link rel="stylesheet" href="animations.css">
 <link rel="stylesheet" href="mobile.css">
@@ -43,7 +71,7 @@ a:focus-visible{outline:2px solid #3A5675;outline-offset:4px}
 </header>
 
 <section aria-labelledby="page-h" style="position: relative; overflow: hidden; background: #0A1A2F; color: #FFFFFF; min-height: 340px; display: flex; align-items: center; justify-content: center; text-align: center">
-<img src="images/hero-toronto.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%">
+<img src="images/hero-alumni.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 62%">
 <span aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10, 26, 47, 0.55)"></span>
 <div style="position: relative; padding: 0 40px; display: flex; flex-direction: column; align-items: center; gap: 32px">
 <span style="display: block; width: 64px; height: 1px; background: #FFFFFF"></span>
@@ -51,10 +79,20 @@ a:focus-visible{outline:2px solid #3A5675;outline-offset:4px}
 </div>
 </section>
 
-<section style="background: #FFFFFF">
-<div style="max-width: 1280px; margin: 0 auto; padding: 112px 40px 160px; display: flex; flex-direction: column; gap: 72px">
+<section id="footprint" aria-labelledby="footprint-h" style="background: #0A1A2F; color: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px 40px 88px; display: flex; flex-direction: column">
+<h2 id="footprint-h" style="margin: 0 0 40px; font-weight: 400; font-size: clamp(36px, 4vw, 56px); line-height: 1.1; text-align: center">Where WPC ends up</h2>
+<div id="route-map" class="route-map" data-no-reveal role="img" aria-label="Map of the cities where WPC alumni work, connected to Waterloo">
+<canvas aria-hidden="true"></canvas>
+<svg aria-hidden="true" preserveAspectRatio="none"></svg>
+</div>
+</div>
+</section>
 
-<div style="display: flex; flex-direction: column; gap: 32px; padding-top: 24px">
+<section style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px 40px 160px; display: flex; flex-direction: column; gap: 72px">
+
+<div style="display: flex; flex-direction: column; gap: 32px">
 <h2 style="margin: 0; font-weight: 400; font-size: 36px; line-height: 1.2; text-align: center">Investment Banking</h2>
 <ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
 
@@ -196,5 +234,8 @@ a:focus-visible{outline:2px solid #3A5675;outline-offset:4px}
 </footer>
 
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="alumni-map.js"></script>
 </body>
 </html>
