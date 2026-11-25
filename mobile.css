@@ -28,8 +28,8 @@ body > div{overflow-x:clip}
   /* Header: logo + menu button, links fold into a panel. */
   header nav{min-height:72px !important;padding:0 24px !important;row-gap:0 !important}
   header nav > a:first-child{padding:12px 0 !important}
-  header .wpc-logo{font-size:15px !important}
-  .wpc-logo-footer{font-size:24px !important}
+  header .wpc-logo{font-size:22px !important}
+  .wpc-logo-footer{font-size:32px !important}
   .site-header.is-scrolled nav{min-height:64px !important}
 
   .has-menu .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:7px;width:44px;height:44px;margin-right:-10px;padding:10px;border:0;background:none !important;cursor:pointer}

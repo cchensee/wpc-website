@@ -8,6 +8,7 @@ var WPC_CITIES = [
   { name: 'Boston', lat: 42.3601, lon: -71.0589, count: 1 },
   { name: 'Calgary', lat: 51.0447, lon: -114.0719, count: 1 },
   { name: 'San Francisco', lat: 37.7749, lon: -122.4194, count: 1 },
+  { name: 'Los Angeles', lat: 34.0522, lon: -118.2437, count: 1 },
   { name: 'London', lat: 51.5072, lon: -0.1276, count: 1 },
   { name: 'Hong Kong', lat: 22.3193, lon: 114.1694, count: 1 }
 ];
@@ -90,7 +91,7 @@ var WPC_CITIES = [
       if (!reduce) {
         var pulse = svg.append('circle').attr('class', 'route-pulse').attr('data-i', i).attr('r', 2);
         pulse.append('animateMotion')
-          .attr('dur', (3.2 + i * 0.35) + 's').attr('repeatCount', 'indefinite')
+          .attr('dur', (6.5 + i * 0.6) + 's').attr('repeatCount', 'indefinite')
           .attr('begin', (1.8 + i * 0.4) + 's').attr('keyPoints', '0;1').attr('keyTimes', '0;1')
           .attr('calcMode', 'spline').attr('keySplines', '0.45 0 0.55 1')
           .append('mpath').attr('href', '#route-' + i);
@@ -115,7 +116,7 @@ var WPC_CITIES = [
   var active = -1;
   // ---- Dot field: dots near the cursor rise up and swell, then settle back. ----
   var dots = [], dotR = 1.25, mouse = null, looping = false;
-  var RADIUS = 50, LIFT = 10;
+  var RADIUS = 40, LIFT = 8;
 
   function drawDots() {
     ctx.clearRect(0, 0, width, height);
@@ -133,13 +134,13 @@ var WPC_CITIES = [
     var moving = false;
     for (var i = 0; i < dots.length; i++) {
       var d = dots[i], target = 0;
-      if (mouse) {
+      if (mouse && active < 0) {
         var dx = d.x - mouse.x, dy = d.y - mouse.y, dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < RADIUS) { var t = 1 - dist / RADIUS; target = t * t * (3 - 2 * t); }
       }
-      var next = d.lift + (target - d.lift) * 0.16;
-      if (Math.abs(next - d.lift) > 0.002) moving = true;
-      d.lift = Math.abs(next) < 0.002 ? 0 : next;
+      var next = d.lift + (target - d.lift) * 0.07;
+      if (Math.abs(next - d.lift) > 0.001) moving = true;
+      d.lift = Math.abs(next) < 0.001 ? 0 : next;
     }
     drawDots();
     if (moving || mouse) requestAnimationFrame(stepDots); else looping = false;
@@ -155,6 +156,7 @@ var WPC_CITIES = [
 
   function highlight(i) {
     active = i;
+    wake();
     svg.classed('has-active', i >= 0);
     svg.selectAll('.route-arc, .route-pulse, .route-city-pt').classed('is-active', function () {
       return +this.getAttribute('data-i') === i;
