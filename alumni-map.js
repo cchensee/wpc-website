@@ -7,6 +7,7 @@ var WPC_CITIES = [
   { name: 'New York', lat: 40.7128, lon: -74.006, count: 1 },
   { name: 'Boston', lat: 42.3601, lon: -71.0589, count: 1 },
   { name: 'Calgary', lat: 51.0447, lon: -114.0719, count: 1 },
+  { name: 'Victoria', lat: 48.4284, lon: -123.3656, count: 1 },
   { name: 'San Francisco', lat: 37.7749, lon: -122.4194, count: 1 },
   { name: 'Los Angeles', lat: 34.0522, lon: -118.2437, count: 1 },
   { name: 'London', lat: 51.5072, lon: -0.1276, count: 1 },
