@@ -115,7 +115,7 @@
       if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       if (a.target && a.target !== '_self') return;
       var url = new URL(a.href, location.href);
-      if (url.origin !== location.origin || url.pathname === location.pathname || !/\.html?$|\/$/.test(url.pathname)) return;
+      if (url.origin !== location.origin || url.pathname === location.pathname || !/(\.html?|\/[^./]*)$/.test(url.pathname)) return;
       e.preventDefault();
       document.documentElement.classList.add('is-leaving');
       setTimeout(function () { location.href = url.href; }, 180);
